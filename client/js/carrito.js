@@ -179,7 +179,7 @@ console.log(total);
 // }
 
 const mercadopago = new MercadoPago(
-    "TEST-f356d53f-5cf1-4c51-af9b-eeae3d4b4c0f",
+    "TEST-4f54b254-ea66-45d0-8724-3b91c465bd77",
     {
       locale: "es-AR",
     }

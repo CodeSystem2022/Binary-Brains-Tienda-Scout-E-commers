@@ -10,13 +10,13 @@ const client = new Client({
     user: 'postgres',
     host: 'localhost',
     database: 'ecommerce',
-    password: '1004',
+    password: 'admin',
     port: 5432,
 });
 
 // Configura MercadoPago
 mercadopago.configure({
-	access_token: "TEST-3876922152834483-091518-52b48865fafab6026817d475747a720d-193927935",
+	access_token: "TEST-4540234230542330-110820-106b282653334ff7cdb4642116cc97f9-663410698",
 });
 
 // Middleware para manejar datos JSON y formularios
