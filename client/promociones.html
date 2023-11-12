@@ -14,14 +14,14 @@
         <h1>Registrate</h1>
 
 
-        <form action="registro.php" method="post">
+        <form action="/guardarDatos" method="post">
             <!-- Campo de entrada para el nombre -->
             <div class="campo">
                 <input type="text" name="nombre" placeholder="Nombre" required>
                 <label for="nombre">Nombre</label>
             </div>
             <div class="campo">
-                <input type="text" name="nombre" placeholder="Apellido" required>
+                <input type="text" name="apellido" placeholder="Apellido" required>
                 <label for="apellido">Apellido</label>
             </div>
             <!-- Campo de entrada para el correo electrónico -->
@@ -31,7 +31,7 @@
             </div>
             <!-- Campo de entrada para el telefono -->
             <div class="campo">
-                <input type="input" name="telefono" placeholder="Número de celular" required>
+                <input type="tel" name="telefono" placeholder="Número de celular" required>
                 <label for="telefono">Número de celular</label>
 
                 <!-- Botón para enviar el formulario de registro -->
