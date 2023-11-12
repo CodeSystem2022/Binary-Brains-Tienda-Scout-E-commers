@@ -1,5 +1,3 @@
-
-
 export const productos = [
     {
         id: 1,
@@ -70,11 +68,11 @@ export const productos = [
     {
         id: 7,
         quanty: 1,
-        titulo: "Pañuelo",
-        imagen: "./img/Pañuelo.png",
+        titulo: "insiginias aunal de campamento",
+        imagen: "./img/1escudo campamento anual 2023.jpg",
         categoria: {
-            nombre: "Pañuelos",
-            id: "pañuelos"
+            nombre: "Insignias",
+            id: "Insigniass"
         },
         precio: 3000
     },
@@ -92,8 +90,8 @@ export const productos = [
     {
         id: 9,
         quanty: 1,
-        titulo: "Insignia Scout Argentina",
-        imagen: "./img/Flor-de-lis-nacional.png",
+        titulo: "InInsignia Paravachasca",
+        imagen: "./img/Paravachasca.png",
         categoria: {
             nombre: "Insignias",
             id: "insignias"
@@ -103,8 +101,8 @@ export const productos = [
     {
         id: 10,
         quanty: 1,
-        titulo: "Insignia Scout Argentina",
-        imagen: "./img/Flor-de-lis-nacional.png",
+        titulo: "Insignia Progresión",
+        imagen: "./img/Progresiones.png",
         categoria: {
             nombre: "Insignias",
             id: "insignias"
@@ -114,8 +112,8 @@ export const productos = [
     {
         id: 11,
         quanty: 1,
-        titulo: "Insignia Campamento",
-        imagen: "./img/1escudo campamento anual 2023.jpg",
+        titulo: "Insignias Rama",
+        imagen: "./img/Pertenencia-Rama.png",
         categoria: {
             nombre: "Insignias",
             id: "insignias"
@@ -125,8 +123,8 @@ export const productos = [
     {
         id: 12,
         quanty: 1,
-        titulo: "Insignia Campamento",
-        imagen: "./img/1escudo campamento anual 2023.jpg",
+        titulo: "Insignias Flor de Lis",
+        imagen: "./img/Flor-de-lis-internacional.png",
         categoria: {
             nombre: "Insignias",
             id: "insignias"
