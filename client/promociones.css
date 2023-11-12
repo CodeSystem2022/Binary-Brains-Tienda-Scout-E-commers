@@ -1,0 +1,72 @@
+/* Estilos para el formulario de registro solo en la página de promociones */
+
+body {
+    background-color: #4f1f96;
+    /* Cambia #8b39d7 por el color de fondo que desees */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #4f1f96;
+   
+}
+.contenedor-formulario h1 {
+    text-align: center; /* Centra solo el título "Registro" dentro del contenedor */
+}
+
+.contenedor-formulario {
+    background-color: rgb(194, 248, 248);
+    padding: 60px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #4f1f96;
+   
+}
+
+.campo input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid rgb(23, 133, 133);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.campo label {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #4f1f96;
+}
+.boton-menu.boton-volver {
+    list-style-type: none;  /* Esto debería quitar el punto o viñeta */
+    color: #4f1f96;
+    padding: 15px 0px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+
+input[type="submit"],
+input[type="reset"] {
+    background-color: #4f1f96;
+    color: rgb(194, 248, 248);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: rgb(62, 182, 182);
+}
