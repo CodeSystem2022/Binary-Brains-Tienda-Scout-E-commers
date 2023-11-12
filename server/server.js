@@ -3,57 +3,92 @@ const app = express();
 const cors = require("cors");
 const mercadopago = require("mercadopago");
 const path = require("path");
+const { Client } = require('pg'); // Agrega la importación de Client desde 'pg'
 
-// REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
+// Configura tu cliente de PostgreSQL
+const client = new Client({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'ecommerce',
+    password: 'admin',
+    port: 5432,
+});
+
+// Configura MercadoPago
 mercadopago.configure({
 	access_token: "TEST-3876922152834483-091518-52b48865fafab6026817d475747a720d-193927935",
 });
 
-
+// Middleware para manejar datos JSON y formularios
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "../client")));
+
+// Habilita CORS
 app.use(cors());
-app.get("/", function (req, res) {
-	path.resolve(__dirname, "../client/index.html");
+
+// Sirve archivos estáticos desde la carpeta "client"
+app.use(express.static(path.join(__dirname, "../client")));
+
+// Ruta para manejar el envío de datos desde el formulario
+app.post('/guardarDatos', async (req, res) => {
+    const { nombre, apellido, correo, telefono } = req.body;
+
+    // Insertar datos en la base de datos
+    const query = 'INSERT INTO promociones (nombre, apellido, correo, telefono) VALUES ($1, $2, $3, $4)';
+    try {
+        await client.query(query, [nombre, apellido, correo, telefono]);
+        console.log('Datos insertados correctamente');
+        res.status(200).json({ mensaje: 'Datos guardados correctamente' });
+    } catch (error) {
+        console.error('Error al insertar datos:', error);
+        res.status(500).json({ mensaje: 'Error al guardar datos' });
+    }
 });
 
+// Ruta para crear preferencias de MercadoPago
 app.post("/create_preference", (req, res) => {
+    let preference = {
+        items: [
+            {
+                title: req.body.description,
+                unit_price: Number(req.body.price),
+                quantity: Number(req.body.quanty),
+            }
+        ],
+        back_urls: {
+            "success": "http://localhost:8080",
+            "failure": "http://localhost:8080",
+            "pending": ""
+        },
+        auto_return: "approved",
+    };
 
-	let preference = {
-		items: [
-			{
-				title: req.body.description,
-				unit_price: Number(req.body.price),
-				quantity: Number(req.body.quanty),
-			}
-		],
-		back_urls: {
-			"success": "http://localhost:8080",
-			"failure": "http://localhost:8080",
-			"pending": ""
-		},
-		auto_return: "approved",
-	};
-
-	mercadopago.preferences.create(preference)
-		.then(function (response) {
-			res.json({
-				id: response.body.id
-			});
-		}).catch(function (error) {
-			console.log(error);
-		});
+    mercadopago.preferences.create(preference)
+        .then(function (response) {
+            res.json({
+                id: response.body.id
+            });
+        }).catch(function (error) {
+            console.log(error);
+            res.status(500).json({ mensaje: 'Error al crear preferencia de MercadoPago' });
+        });
 });
 
+// Ruta para manejar feedback de MercadoPago
 app.get('/feedback', function (req, res) {
-	res.json({
-		Payment: req.query.payment_id,
-		Status: req.query.status,
-		MerchantOrder: req.query.merchant_order_id
-	});
+    res.json({
+        Payment: req.query.payment_id,
+        Status: req.query.status,
+        MerchantOrder: req.query.merchant_order_id
+    });
 });
 
+// Conecta a la base de datos PostgreSQL
+client.connect()
+    .then(() => console.log('Conexión exitosa a PostgreSQL'))
+    .catch(err => console.error('Error de conexión a PostgreSQL', err));
+
+// Inicia el servidor en el puerto 8080
 app.listen(8080, () => {
-	console.log("The server is now running on Port 8080");
+    console.log("El servidor está ahora en ejecución en el puerto 8080");
 });
