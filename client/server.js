@@ -45,12 +45,12 @@ app.post('/guardarDatos', async (req, res) => {
 });
 
 // Rutas adicionales para manejar éxito y error
-app.get('/exito', (req, res) => {
+app.get('./exito', (req, res) => {
     const mensaje = req.query.mensaje || 'Operación exitosa';
     res.send(`<h1>${mensaje}</h1>`);
 });
 
-app.get('/error', (req, res) => {
+app.get('./error', (req, res) => {
     const mensaje = req.query.mensaje || 'Error desconocido';
     res.send(`<h1>${mensaje}</h1>`);
 });
