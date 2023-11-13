@@ -1,26 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Éxito</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-    />
-    <link rel="stylesheet" href="./exito.css" />
-  </head>
-  <body>
-    <div>
-      <h1>Operación Exitosa</h1>
-      <p>Los datos se han guardado correctamente</p>
-      <p><a href="./index.html">Volver a la página principal</a></p>
-    </div>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Éxito</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <link rel="stylesheet" href="./exito.css" />
+</head>
+<body>
+  <div>
+    <h1>Operación Exitosa</h1>
+    <p>Los datos se han guardado correctamente</p>
+    <p><a href="./index.html">Volver a la página principal</a></p>
+  </div>
+
+  <!-- Agrega el código JavaScript para mostrar la notificación -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+    // Función para mostrar la notificación
+    function mostrarNotificacion() {
+      console.log("La función mostrarNotificacion se ha ejecutado");
+      Toastify({
+        text: "Registro Exitoso",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "linear-gradient(to right, #4b33a8, #785ce9)",
+          borderRadius: "2rem",
+          textTransform: "uppercase",
+          fontSize: ".75rem",
+        },
+        offset: {
+          x: "1.5rem",
+          y: "1.5rem",
+        },
+        onClick: function () { },
+      }).showToast();
+    }
+
+    // Llama a la función cuando la estructura HTML se ha cargado
+    document.addEventListener("DOMContentLoaded", function () {
+      mostrarNotificacion();
+    });
+  </script>
+</body>
+
+
 </html>
