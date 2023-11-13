@@ -25,7 +25,6 @@ app.use(express.json());
 // Servir archivos estáticos (como tu archivo HTML)
 app.use(express.static(path.join(__dirname)));
 
-// Reemplaza la redirección en /guardarDatos con el envío directo de la página de éxito
 app.post('/guardarDatos', async (req, res) => {
     const { nombre, apellido, correo, telefono } = req.body;
 

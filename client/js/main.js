@@ -1,9 +1,6 @@
 // Inicializar un array vacío para almacenar los productos
 import { productos } from "./products.js";
 
-// Realizar una solicitud Fetch para obtener datos de productos desde un archivo JSON
-
-
 // Obtener referencias a elementos del DOM
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
