@@ -23,8 +23,13 @@ mercadopago.configure({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Habilita CORS
-app.use(cors());
+// // Habilita CORS
+// app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000', // Reemplaza con la URL del servidor del cliente
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+}));
 
 // Sirve archivos estáticos desde la carpeta "client"
 app.use(express.static(path.join(__dirname, "../client")));

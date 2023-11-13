@@ -9,7 +9,7 @@ const client = new Client({
     user: 'postgres',  // Reemplaza con tu nombre de usuario de PostgreSQL
     host: 'localhost',
     database: 'ecommerce',  // Reemplaza con el nombre de tu base de datos
-    password: '1004',  // Reemplaza con tu contraseña de PostgreSQL
+    password: 'admin',  // Reemplaza con tu contraseña de PostgreSQL
     port: 5432,
 });
 
@@ -25,6 +25,7 @@ app.use(express.json());
 // Servir archivos estáticos (como tu archivo HTML)
 app.use(express.static(path.join(__dirname)));
 
+// Reemplaza la redirección en /guardarDatos con el envío directo de la página de éxito
 app.post('/guardarDatos', async (req, res) => {
     const { nombre, apellido, correo, telefono } = req.body;
 
@@ -34,25 +35,14 @@ app.post('/guardarDatos', async (req, res) => {
         await client.query(query, [nombre, apellido, correo, telefono]);
         console.log('Datos insertados correctamente');
 
-        // Redirigir a una nueva página con un mensaje de éxito
-        res.redirect('/exito?mensaje=Datos%20guardados%20correctamente');
+        // Enviar directamente la página de éxito
+        res.redirect('/exito.html');;
     } catch (error) {
         console.error('Error al insertar datos:', error);
 
         // Redirigir a una nueva página con un mensaje de error
         res.redirect('/error?mensaje=Error%20al%20guardar%20datos');
     }
-});
-
-// Rutas adicionales para manejar éxito y error
-app.get('./exito', (req, res) => {
-    const mensaje = req.query.mensaje || 'Operación exitosa';
-    res.send(`<h1>${mensaje}</h1>`);
-});
-
-app.get('./error', (req, res) => {
-    const mensaje = req.query.mensaje || 'Error desconocido';
-    res.send(`<h1>${mensaje}</h1>`);
 });
 
 // Iniciar el servidor
